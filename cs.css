@@ -1,0 +1,777 @@
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #020b18;
+  --panel: rgba(3, 17, 36, .78);
+  --text: #f4f7ff;
+  --muted: #c6d5e8;
+  --cyan: #13d8f5;
+  --blue: #087eff;
+  --border: #075da0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  font-family: Inter, Arial, sans-serif;
+  overflow-x: hidden;
+
+  background-image:
+    radial-gradient(
+      ellipse at 70% 10%,
+      rgba(0, 91, 180, .15),
+      transparent 40%
+    );
+}
+
+/* NAVBAR */
+
+.topbar {
+  height: 74px;
+  padding: 0 3.4%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  border-bottom: 1px solid #07538a;
+  background: rgba(1, 9, 21, .94);
+
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(14px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.brand b,
+.brand-mark {
+  color: var(--cyan);
+}
+
+.brand-mark {
+  font-size: 30px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(15px, 3vw, 46px);
+  height: 100%;
+}
+
+.nav-links a {
+  color: #e7efff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--cyan);
+  border-color: var(--cyan);
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.theme-toggle,
+.menu-toggle {
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.status-pill {
+  border: 1px solid var(--cyan);
+  padding: 10px 17px;
+  border-radius: 30px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.status-pill i {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background: var(--cyan);
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+/* MAIN */
+
+main {
+  width: min(1440px, 100%);
+  margin: auto;
+  padding: 0 2.5%;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 250px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 25px 12px 30px;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 0 31%;
+  opacity: .58;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--bg),
+      transparent 35%,
+      rgba(2,11,24,.15)
+    ),
+    url("images/hero-mountains.jpg") center 48%/cover;
+}
+
+.hero-copy {
+  z-index: 2;
+}
+
+.hello {
+  font-size: 29px;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(42px, 5vw, 66px);
+  letter-spacing: -2px;
+  margin: 0;
+  line-height: 1.1;
+}
+
+h1 span,
+strong {
+  color: var(--cyan);
+}
+
+.cursor {
+  color: var(--cyan);
+  font-style: normal;
+  font-weight: 300;
+  animation: blink .8s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.location {
+  font-size: 17px;
+  margin: 12px 0 24px;
+  color: #d9e7f5;
+}
+
+.location span {
+  color: var(--cyan);
+  font-size: 24px;
+  margin-right: 8px;
+}
+
+.motto {
+  font: 22px Kalam, cursive;
+  color: var(--cyan);
+  margin: 0;
+}
+
+.motto b {
+  padding: 0 12px;
+}
+
+.hero-quote {
+  position: absolute;
+  left: 61%;
+  top: 62px;
+  font-size: 20px;
+  line-height: 1.35;
+  margin: 0;
+  text-shadow: 0 2px 8px #000;
+}
+
+.profile-photo {
+  position: absolute;
+  right: 2%;
+  top: 10px;
+  width: 205px;
+  height: 205px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--cyan);
+  box-shadow: 0 0 24px #008cff;
+}
+
+/* PANELS */
+
+.panel {
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  margin: 14px 0;
+  padding: 13px 16px;
+  min-height: 155px;
+
+  display: flex;
+  align-items: center;
+  gap: 22px;
+
+  position: relative;
+  overflow: hidden;
+  background: var(--panel);
+
+  box-shadow: inset 0 0 20px rgba(0, 111, 255, .04);
+}
+
+.panel-icon {
+  flex: 0 0 80px;
+  width: 80px;
+  height: 80px;
+  border-radius: 15px;
+
+  display: grid;
+  place-items: center;
+  font-size: 38px;
+
+  background: linear-gradient(
+    140deg,
+    #05baf9,
+    #2549ef 55%,
+    #8d20e9
+  );
+
+  box-shadow: 0 0 18px rgba(0, 149, 255, .2);
+}
+
+.panel-copy {
+  align-self: center;
+  min-width: 280px;
+  position: relative;
+  z-index: 2;
+}
+
+h2 {
+  font-size: 27px;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+  line-height: 1.1;
+}
+
+h2:after {
+  content: "";
+  display: block;
+  width: 65px;
+  height: 2px;
+  background: var(--cyan);
+  margin-top: 8px;
+}
+
+ul {
+  margin: 0;
+  padding-left: 18px;
+  line-height: 1.55;
+  font-size: 15px;
+}
+
+.cyan-bullets li::marker {
+  color: var(--cyan);
+}
+
+/* HOBBIES LIST */
+
+.check-list,
+.cross-list {
+  list-style: none;
+  padding: 0;
+}
+
+.check-list li,
+.cross-list li {
+  position: relative;
+  padding-left: 34px;
+  line-height: 1.55;
+}
+
+.check-list li:before,
+.cross-list li:before {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  color: #00101e;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.check-list li:before {
+  content: "✓";
+  background: var(--cyan);
+}
+
+.cross-list li:before {
+  content: "×";
+  background: var(--cyan);
+}
+
+/* HANDWRITTEN NOTES */
+
+.hand-note {
+  color: var(--cyan);
+  font: 24px/1.05 Kalam, cursive;
+  transform: rotate(-7deg);
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.education-note {
+  margin-left: auto;
+}
+
+.education-art {
+  width: 220px;
+  height: 120px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  mix-blend-mode: screen;
+}
+
+/* HOBBIES */
+
+.hobbies-panel {
+  min-height: 195px;
+}
+
+.hobbies-panel .panel-copy {
+  min-width: 260px;
+}
+
+.hobbies-note {
+  border-left: 1px solid #0872b4;
+  padding-left: 28px;
+  margin-left: auto;
+}
+
+.hobby-gallery {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(75px, 1fr));
+  gap: 7px;
+  width: 49%;
+  min-width: 420px;
+  z-index: 2;
+}
+
+.hobby-gallery figure {
+  margin: 0;
+  height: 145px;
+  border: 1px solid #087ab0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #06182b;
+  position: relative;
+}
+
+.hobby-gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hobby-gallery figcaption {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 5px 2px;
+  background: rgba(0, 8, 18, .8);
+  font-size: 12px;
+}
+
+/* VALUES */
+
+.values-panel {
+  min-height: 140px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--panel) 28%,
+      rgba(2,12,26,.3)
+    ),
+    url("images/values-mountains.jpg") center 53%/cover;
+}
+
+.values-note {
+  margin-left: auto;
+}
+
+.good-vibes {
+  margin-left: auto;
+  align-self: flex-end;
+  font: 16px Kalam, cursive;
+  transform: rotate(-10deg);
+}
+
+/* AIM */
+
+.aim-panel {
+  min-height: 112px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--panel) 12%,
+      rgba(2,12,26,.2)
+    ),
+    url("images/aim-mountains.jpg") center 52%/cover;
+}
+
+.aim-icon {
+  background: linear-gradient(140deg, #00e4a0, #00a86b);
+  font-size: 48px;
+}
+
+.aim-copy {
+  flex: 1;
+}
+
+.aim-copy p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.aim-note {
+  margin-left: auto;
+}
+
+/* FOOTER */
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 12px 0 25px;
+  color: var(--cyan);
+  font-size: 34px;
+}
+
+footer span {
+  width: 190px;
+  height: 1px;
+  background: var(--cyan);
+}
+
+/* SCROLL ANIMATION */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* LIGHT MODE */
+
+body.light {
+  --bg: #edf6ff;
+  --panel: rgba(255,255,255,.86);
+  --text: #0a1b30;
+  --muted: #31465d;
+}
+
+body.light .topbar {
+  background: rgba(238,247,255,.94);
+}
+
+body.light .nav-links a,
+body.light .theme-toggle {
+  color: #0a1b30;
+}
+
+body.light .location {
+  color: #19334e;
+}
+
+body.light .hero-bg {
+  opacity: .35;
+}
+
+body.light .panel {
+  box-shadow: 0 8px 24px rgba(0,40,90,.08);
+}
+
+/* TABLET */
+
+@media (max-width: 1050px) {
+
+  .topbar {
+    gap: 12px;
+    padding: 0 2%;
+  }
+
+  .brand {
+    font-size: 20px;
+    gap: 10px;
+  }
+
+  .nav-links {
+    gap: 16px;
+  }
+
+  .status-pill {
+    display: none;
+  }
+
+  .profile-photo {
+    width: 170px;
+    height: 170px;
+  }
+
+  .hero-quote {
+    left: 58%;
+    font-size: 17px;
+  }
+
+  .hobby-gallery {
+    min-width: 350px;
+  }
+
+  .hobbies-panel .panel-copy {
+    min-width: 210px;
+  }
+
+  .hobbies-note {
+    display: none;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 720px) {
+
+  .topbar {
+    height: 65px;
+  }
+
+  .brand {
+    font-size: 19px;
+  }
+
+  .brand-mark {
+    font-size: 24px;
+  }
+
+  .menu-toggle {
+    display: block;
+    margin-left: auto;
+    font-size: 25px;
+  }
+
+  .top-actions {
+    gap: 6px;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    height: auto;
+    padding: 12px 22px 18px;
+    background: #031226;
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 12px 4px;
+    border-bottom: 1px solid rgba(0,160,255,.15);
+  }
+
+  main {
+    padding: 0 12px;
+  }
+
+  .hero {
+    min-height: 320px;
+    align-items: flex-start;
+    padding-top: 28px;
+  }
+
+  .hello {
+    font-size: 22px;
+  }
+
+  h1 {
+    font-size: 43px;
+  }
+
+  .location {
+    font-size: 13px;
+    margin: 10px 0;
+  }
+
+  .motto {
+    font-size: 17px;
+    max-width: 270px;
+  }
+
+  .motto b {
+    padding: 0 4px;
+  }
+
+  .profile-photo {
+    width: 112px;
+    height: 112px;
+    right: 8px;
+    top: 16px;
+  }
+
+  .hero-bg {
+    inset: 90px 0 0 0;
+    opacity: .45;
+  }
+
+  .hero-quote {
+    left: 12px;
+    top: 205px;
+    font-size: 16px;
+  }
+
+  .panel {
+    padding: 14px;
+    gap: 12px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    min-height: 0;
+  }
+
+  .panel-icon {
+    width: 54px;
+    height: 54px;
+    flex-basis: 54px;
+    font-size: 27px;
+    border-radius: 12px;
+  }
+
+  .panel-copy {
+    min-width: 0;
+    flex: 1;
+  }
+
+  h2 {
+    font-size: 21px;
+    margin-bottom: 8px;
+  }
+
+  ul {
+    font-size: 13px;
+  }
+
+  .education-note,
+  .education-art,
+  .hobbies-note,
+  .good-vibes,
+  .aim-note {
+    display: none;
+  }
+
+  .hobbies-panel .panel-copy {
+    min-width: 0;
+  }
+
+  .hobby-gallery {
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: repeat(5, minmax(0,1fr));
+    gap: 5px;
+  }
+
+  .hobby-gallery figure {
+    height: 105px;
+  }
+
+  .hobby-gallery figcaption {
+    font-size: 10px;
+  }
+
+  .values-panel {
+    background-position: center;
+  }
+
+  .aim-copy {
+    min-width: 0;
+  }
+
+  .aim-copy p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  footer span {
+    width: 75px;
+  }
+}
